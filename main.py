@@ -24,7 +24,7 @@ class UserDetails:
         with open('User_Data.json') as user_show:
             user_info = json.load(user_show)
         print("YOUR DETAILS ARE BELOW : - \n")
-        print((user_info))
+        print(user_info)
 
 
 # login function - takes data as argument from json files regarding username and password.
@@ -48,7 +48,7 @@ def login(data):
 def signup(data):
     if name not in data:
         data[name] = password
-        with open('data.json', 'w') as json_file_write:
+        with open('data.json', 'a') as json_file_write:
             json.dump(data, json_file_write)
         print("USER REGISTER... \nNOW LOGIN AGAIN")
     else:
@@ -77,7 +77,11 @@ def homepage(name):
         print("Seat reserved.\nYour seat number is {}".format(seat_choice))
         user = UserDetails(user_name, email, age, seat_choice)
         user.save_data()
-        user.show_data()
+        print("DO YOU WANNA SEE YOUR DETAILS : - \n1 - Show Details.\n2 - Exit()")
+        if int(input()) == 1:
+            user.show_data()
+        else:
+            exit(0)
 
         with open('seats.json', 'w') as seats_write:
             seat_data[seat_choice] = True
