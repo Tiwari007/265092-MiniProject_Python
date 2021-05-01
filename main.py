@@ -48,7 +48,7 @@ def login(data):
 def signup(data):
     if name not in data:
         data[name] = password
-        with open('data.json', 'a') as json_file_write:
+        with open('data.json', 'w') as json_file_write:
             json.dump(data, json_file_write)
         print("USER REGISTER... \nNOW LOGIN AGAIN")
     else:
